@@ -118,19 +118,28 @@ function productsToHTML(list) {
 
 filters.addEventListener("click", (event) => {
   const onSaleOnly = event.target.id === "btn-sale";
+  const under30Only = event.target.id === "btn-under-30";
+   
 
   // Step 1: Filter the products based on onSaleOnly
   let visible = products;
   if (onSaleOnly) {
     visible = products.filter((product) => product.onSale);
   }
-
+else if (under30Only) {
+    visible = products.filter((product) => product.price < 30);
+}
   // Step 2: Show the remaining products on the page with productsToHTML function and innerHTML
    productList.innerHTML = productsToHTML(visible);
   // Step 3: Toggle the "active" class on the buttons to show which one is selected, either btnAll or btnSale
-    btnAll.classList.toggle("active", !onSaleOnly);
-    btnSale.classList.toggle("active", onSaleOnly);
+    btnAll.classList.toggle("active", !onSaleOnly && !under30Only);
+  btnSale.classList.toggle("active", onSaleOnly);
+
+  document.querySelector("#btn-under-30")
+    .classList.toggle("active", under30Only);
+
 });
+
 
 
 /* ------------------------------------------------------------
@@ -167,6 +176,8 @@ const productName = event.target.dataset.name;
     // Step 3: Call renderCart() to update the cart display
  renderCart();
 });
+
+
 
 
 /* ------------------------------------------------------------
