@@ -61,7 +61,7 @@ const cartCount   = document.querySelector("#cart-count");
 const cartItems   = document.querySelector("#cart-items");
 const cartTotal = document.querySelector("#cart-total");
 const clearCartBtn = document.querySelector("#clear-cart");
-
+const btnUnder30 = document.querySelector("#btn-under-30");
 // The cart starts empty. We only ever add to it.
 let cart = [];
 
@@ -101,8 +101,6 @@ function productsToHTML(list) {
   }).join("");
 }
 
-   
-}
 
 
 /* ------------------------------------------------------------
@@ -134,9 +132,8 @@ else if (under30Only) {
   // Step 3: Toggle the "active" class on the buttons to show which one is selected, either btnAll or btnSale
     btnAll.classList.toggle("active", !onSaleOnly && !under30Only);
   btnSale.classList.toggle("active", onSaleOnly);
-
-  document.querySelector("#btn-under-30")
-    .classList.toggle("active", under30Only);
+  btnUnder30.classList.toggle("active", under30Only);
+  
 
 });
 
