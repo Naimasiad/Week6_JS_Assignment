@@ -59,7 +59,8 @@ const btnAll      = document.querySelector("#btn-all");
 const btnSale     = document.querySelector("#btn-sale");
 const cartCount   = document.querySelector("#cart-count");
 const cartItems   = document.querySelector("#cart-items");
-
+const cartTotal = document.querySelector("#cart-total");
+const clearCartBtn = document.querySelector("#clear-cart");
 
 // The cart starts empty. We only ever add to it.
 let cart = [];
