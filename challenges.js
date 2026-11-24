@@ -150,10 +150,19 @@ else if (under30Only) {
 
 function renderCart() {
   cartCount.textContent = cart.length;
+
   cartItems.innerHTML = cart
     .map((name) => `<li>${name}</li>`)
     .join("");
+
+  const total = cart.reduce((sum, name) => {
+    const product = products.find((item) => item.name === name);
+    return sum + product.price;
+  }, 0);
+
+  cartTotal.textContent = total.toFixed(2);
 }
+
 
 
 /* ------------------------------------------------------------
@@ -176,7 +185,11 @@ const productName = event.target.dataset.name;
     // Step 3: Call renderCart() to update the cart display
  renderCart();
 });
-
+// Stretch — Clear Cart
+clearCartBtn.addEventListener("click", () => {
+  cart = [];
+  renderCart();
+});
 
 
 
